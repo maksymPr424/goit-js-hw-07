@@ -14,6 +14,8 @@ create.classList.add("create-btn");
 destroy.classList.add("destroy-btn");
 
 const createBoxes = (amount) => {
+  boxes.innerHTML = "";
+
   const divArr = [];
   let width = 30;
 
@@ -32,10 +34,9 @@ const createBoxes = (amount) => {
 };
 
 const createFunk = (e) => {
-  const inputValue = input.value;
+  const inputValue = Number(input.value);
   if (inputValue <= 100 && inputValue >= 1) {
     createBoxes(inputValue);
-  } else {
   }
 };
 

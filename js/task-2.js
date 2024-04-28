@@ -28,19 +28,22 @@ const images = [
 const gallery = document.querySelector(".gallery");
 
 const appendGallery = (gallery, images) => {
+  const fragment = document.createDocumentFragment();
+
   for (let i = 0; i < images.length; i++) {
-    const imgItem = createEl(gallery);
+    const imgItem = createEl(fragment);
 
     imgItem.setAttribute("src", images[i].url);
     imgItem.setAttribute("alt", images[i].alt);
   }
+  gallery.appendChild(fragment);
 };
 
 const createEl = (parent) => {
   const imgLi = document.createElement("li");
   imgLi.append(document.createElement("img"));
   parent.append(imgLi);
-  
+
   return imgLi.querySelector("img");
 };
 
