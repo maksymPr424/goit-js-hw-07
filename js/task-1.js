@@ -1,32 +1,39 @@
+const categories = document.querySelector("#categories");
+const liItems = document.querySelectorAll(".item");
 
-
-const customer = {
-  username: "Mango",
-  balance: 24000,
-  discount: 0.1,
-  orders: ["Burger", "Pizza", "Salad"],
-  // Change code below this line
-  getBalance() {
-    return this.balance;
-  },
-  getDiscount() {
-    return this.discount;
-  },
-  setDiscount(value) {
-    this.discount = value;
-  },
-  getOrders() {
-    return this.orders;
-  },
-  addOrder(cost, order) {
-    this.balance -= cost - cost * this.discount;
-    this.orders.push(order);
-  },
-  // Change code above this line
+const countChildren = (parent) => {
+  console.log(`Numbers of categories: ${parent.children.length}`);
 };
 
-customer.setDiscount(0.15);
-console.log(customer.getDiscount()); // 0.15
-customer.addOrder(5000, "Steak");
-console.log(customer.getBalance()); // 19750
-console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
+const numInLi = (items) => {
+  const headers = [];
+  items.forEach((item) => {
+    const children = item.querySelector("ul").children;
+    const obgItem = {
+      header: item.querySelector("h2").textContent,
+      count: numChildren(children),
+    };
+    headers.push(obgItem);
+  });
+
+  output(headers);
+};
+
+const numChildren = (parent) => {
+  let numOfChildren = 0;
+  for (let i = 0; i < parent.length; i++) {
+    numOfChildren = i;
+  }
+
+  return numOfChildren;
+};
+
+const output = (headers) => {
+  for (const item of headers) {
+    console.log(`Category: ${item.header}`);
+    console.log(`Elements: ${item.count}`);
+  }
+};
+
+countChildren(categories);
+numInLi(liItems);
