@@ -31,20 +31,20 @@ const appendGallery = (gallery, images) => {
   const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < images.length; i++) {
-    const imgItem = createEl(fragment);
-
-    imgItem.setAttribute("src", images[i].url);
-    imgItem.setAttribute("alt", images[i].alt);
+    const imgItem = createEl(images[i]);
+    fragment.appendChild(imgItem);
   }
+
   gallery.appendChild(fragment);
 };
 
-const createEl = (parent) => {
+const createEl = (image) => {
   const imgLi = document.createElement("li");
-  imgLi.append(document.createElement("img"));
-  parent.append(imgLi);
-
-  return imgLi.querySelector("img");
+  const img = document.createElement("img");
+  img.setAttribute("src", image.url);
+  img.setAttribute("alt", image.alt);
+  imgLi.appendChild(img);
+  return imgLi;
 };
 
 appendGallery(gallery, images);

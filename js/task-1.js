@@ -21,10 +21,9 @@ const numInLi = (items) => {
 
 const numChildren = (parent) => {
   let numOfChildren = 0;
-  for (let i = 0; i <= parent.length; i++) {
-    numOfChildren = i;
+  for (let i = 0; i < parent.length; i++) {
+    numOfChildren++;
   }
-
   return numOfChildren;
 };
 
